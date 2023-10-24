@@ -4,7 +4,8 @@
   "description": "Creacion de API en express.js para conexion de interfaz de usuario con IA",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "keywords": [
     "API",
@@ -14,6 +15,7 @@
   "author": "kimberly soler",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "nodemon": "^3.0.1"
   }
