@@ -8,7 +8,7 @@ const { historyInformation, getHistoryInformation } = require('./controllers/aut
 // DEFINICIÓN DE PUERTO Y LLAMADO
 const PORT_DEFINED = process.env.PORT || 3000; //se crea el puerto donde queremos visualizar la información de forma local. 
 app.listen(PORT_DEFINED, () => {
-    console.log(`El servidor está escuchando en http://localhost${PORT_DEFINED}...`);
+    console.log(`El servidor está escuchando en http://localhost:${PORT_DEFINED}...`);
 }); // se llama el puerto para que este sea escuchado y se pueda visualizar desde express.js 
 //--------------------------------------------------------------------------------
 
