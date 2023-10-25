@@ -16,4 +16,4 @@ document.getElementById("form-history").addEventListener("submit", async(event) 
         })
     });
 
-})
+});
