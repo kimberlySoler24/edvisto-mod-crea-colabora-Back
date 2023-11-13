@@ -21,13 +21,6 @@
 *** para URL de contribuyentes, URL de forks, etc. Esta es una sintaxis concisa y opcional que puede utilizar.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 <!-- PROJECT LOGO -->
@@ -37,19 +30,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">EdVisto Módulo crear y colaborar </h3>
 
   <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    En este repositorio encontrarás el código correspondiente al desarrollo bakend del módulo crear y colaborar, trabajado por el team 1.
   </p>
 </div>
 
@@ -86,9 +70,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Acerca del Proyecto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Aquí tienes una plantilla en blanco para empezar: Para evitar volver a escribir demasiada información. Haga una búsqueda y reemplace con su editor de texto lo siguiente: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+A continuación, encontrará el código relacionado a la obtención de información adquirida desde formulario diligenciado en el frontend para almacenar en una base de datos y crear la respectiva narrativa con uso de la inteligencia artificial OPENAI de GPT.
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
@@ -96,16 +78,12 @@ Aquí tienes una plantilla en blanco para empezar: Para evitar volver a escribir
 
 ### Construido con
 
-Borra la tecnología o agrega segun la tecnología que utilices
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![Node][Node.js]][https://nodejs.org/en]
+* [![Express][Express.js]][https://expressjs.com/]
+* [![Dotenv][Dotenv]][https://www.npmjs.com/package/dotenv]
+* [![Nodemon][Nodemon]][https://www.npmjs.com/package/nodemon]
+* [![OpenAI][OpenAI]][https://www.npmjs.com/package/openai]
+* [![MongoDB][MongoDB]][https://www.mongodb.com/es]
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
@@ -114,32 +92,53 @@ Borra la tecnología o agrega segun la tecnología que utilices
 <!-- GETTING STARTED -->
 ## Guia de inicial
 
-Este es un ejemplo de cómo puede dar instrucciones sobre cómo configurar su proyecto localmente.
-Para poner en funcionamiento una copia local, siga estos sencillos pasos de ejemplo.
+Para poder usar este repositorio local se recomienda hacer los siguientes pasos:
 
 ### Prerequisitos
 
-Este es un ejemplo de cómo enumerar los elementos necesarios para utilizar el software y cómo instalarlos.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+1. cree una copia del repositorio en su repositorio, para ello debe ingresar a este repositorio y dar clic en el botón que dice "FORK".
+2. Una vez teniendo la copia en el repositorio de su github, clone el proyecto en su repositorio local con `git clone <link copia del repositorio>`.
+3. Abra la carpeta donde clonó el repositorio y en el espacio donde describe la ruta de la carpeta escriba "cmd"
+4. A continuación se abrirá la consola de windows, escribir en la consola "code ." 
+5. El proyecto se abrirá en visual studio code, con todos los archivos del directorio.
+6. dirijase al archivo principal denominado "app.js"
+7. con "CTRL + J" abra la terminal en visual studio code e instale los siguientes paquetes, los cuales le permitirán el uso adecuado del proyecto.
+
 
 ### Instalacion
 
-1. Obtenga una clave API gratuita en  [https://example.com](https://example.com)
-2. Clonar el repositorio
+Para que el proyecto funcione, es importante validar todas las versiones de las dependencias usadas en el proyecto e instalarlas:
+1. Ingresar al archivo package.json donde describe la información de las versiones usadas sobre las dependencias del proyecto.
+2. Instalar paquete express
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   npm install express@4.18.2
    ```
-3. Instalar paquetes NPM
+3. Instalar dependencia dotenv
    ```sh
-   npm install
+   npm install dotenv@16.3.1
    ```
-4. Ingrese su API en `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Instalar dependencia mongoose
+   ```sh
+   npm install mongoose@8.0.0
    ```
+5. Instalar dependencia nodemon
+   ```sh
+   npm install nodemon@3.0.1
+   ```
+6. Instalar dependencia openai
+   ```sh
+   npm install openai@4.14.2
+   ```
+7. Crear un archivo .env para guardar las variables de entorno de uso privado para implementación de la API KEY de openAI y la base de datos de mongoDB :
+creación variables de api key
+```sh
+# VARIABLES DE AMBIENTE PARA INTELIGENCIA ARTIFICIAL
+OPENAI_API_KEY= "pegar el link de la API KEY creada en openAI"
+ORGANIZATION_OPEN_AI= "pegar el link de la organización"
+
+# VARIABLES PARA USO DE BASE DE DATOS EN MONGO DB
+MONGODB_URI= "copiar ruta de base de datos creada en mongoDB donde se almacenará toda la información respectiva."
+```
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
