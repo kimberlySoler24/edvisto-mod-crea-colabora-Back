@@ -4,15 +4,15 @@ async function historyInformation(request, response) {
     console.log(request.body);
     let informationSchema = new InformationSchema();
 
+    informationSchema.title = request.body.title; //permite obtener el valor de entrada de cada etiqueta HTML
+    informationSchema.vida = request.body.vida;
+    informationSchema.suceso = request.body.suceso; //permite obtener el valor de entrada de cada etiqueta HTML
+    informationSchema.resolver = request.body.resolver;
     informationSchema.idea = request.body.idea; //permite obtener el valor de entrada de cada etiqueta HTML
-    informationSchema.project = request.body.project;
-    informationSchema.interest = request.body.interest; //permite obtener el valor de entrada de cada etiqueta HTML
-    informationSchema.knowledge = request.body.knowledge;
-    informationSchema.think = request.body.think; //permite obtener el valor de entrada de cada etiqueta HTML
-    informationSchema.information = request.body.information;
+    informationSchema.solucion = request.body.solucion;
 
 
-    if (!informationSchema.idea  || !informationSchema.project || !informationSchema.interest  || !informationSchema.knowledge ||!informationSchema.think  || !informationSchema.information) {
+    if (!informationSchema.title  || !informationSchema.vida || !informationSchema.suceso  || !informationSchema.resolver ||!informationSchema.idea  || !informationSchema.solucion) {
         return response.status(400).send({
             status: "Error",
             message: "Los campos están incompletos"
@@ -45,9 +45,9 @@ async function historyInformation(request, response) {
 
   async function updateInformation(request, response) {
     const historyId= request.params.historyId 
-    const {idea, project, interest, knowledge, think, information} = request.body;
+    const {title, vida, suceso, resolver, idea, solucion} = request.body;
     InformationSchema
-    .updateOne({ _id: historyId }, { $set: { idea, project, interest, knowledge, think, information } } )
+    .updateOne({ _id: historyId }, { $set: { title, vida, suceso, resolver, idea, solucion } } )
     .then((data) => response.status(200).json(data))
     .catch((error) => response.status(500).json({message: `La información no se encuentra en la base de datos ${error}`}))
   };
