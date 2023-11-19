@@ -2,27 +2,27 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const InformationSchema = Schema({
+    title: {
+        type: String, 
+        required: true
+    },
+    vida: {
+        type: [String], 
+        required: true
+     },
+    suceso: {
+        type: String, 
+        required: true
+    },
+    resolver: {
+        type: String, 
+        required: true
+    },
     idea: {
         type: String, 
         required: true
     },
-    project: {
-        type: String, 
-        required: true
-     },
-    interest: {
-        type: String, 
-        required: true
-    },
-    knowledge: {
-        type: String, 
-        required: true
-    },
-    think: {
-        type: String, 
-        required: true
-    },
-    information: {
+    solucion: {
         type: String, 
         required: true
     }, 
