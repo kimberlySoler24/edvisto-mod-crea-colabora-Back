@@ -37,13 +37,10 @@ app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname + '/index.html'));
 });
 
-app.get('/index2', (request, response) => {
-    response.sendFile(path.resolve(__dirname + '/src/index2.html'));
+app.get('/narrativa', (request, response) => {
+    response.sendFile(path.resolve(__dirname + '/src/story-camino.html'));
 });
 
-app.get('/index3', (request, response) => {
-    response.sendFile(path.resolve(__dirname + '/src/index3.html'));
-});
 
 app.post('/api/informacion-historia', historyInformation);//permite agregar información requerida en nuesta api de la página 1.
 app.get('/api/informacion-historia', getHistoryInformation);// permite obtener la información con el método GET y visualizarla en la ruta respectiva
