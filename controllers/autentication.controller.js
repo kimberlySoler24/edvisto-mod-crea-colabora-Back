@@ -19,10 +19,22 @@ async function historyInformation(request, response) {
         })
     };
 
-    informationSchema
-    .save()
-    .then((data) => response.status(200).json(data))
-    .catch((error) => response.status(500).json({message: `La información no se está guardando en la base de datos ${error}`}));
+    try {
+      const savedData = await informationSchema.save();
+      response.status(200).json({
+        id: savedData._id,
+        message: 'Información guardada exitosamente'
+      });
+    } catch (error) {
+      response.save(500).json({
+        message: `La información no se está guardando en la base de datos ${error}`
+      })
+    }
+
+    // informationSchema
+    // .save()
+    // .then((data) => response.status(200).json(data))
+    // .catch((error) => response.status(500).json({message: `La información no se está guardando en la base de datos ${error}`}));
 }
 
 
