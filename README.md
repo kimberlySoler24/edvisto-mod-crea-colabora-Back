@@ -1,26 +1,4 @@
 <a name="readme-top"></a>
-<!--
-*** Este es un fork del proyecto https://github.com/maureenbarahona/readme-template 
-***
-*** Este es un template inicial del repo
-*** Gracias por consultar este repositorio 
-*** Si tiene una sugerencia o mejora bifurque el repo
-*** Y cree una solicitud de extracción
-*** o simplemente abra una incidencia con la etiqueta "mejora".
-*** ¡No olvides darle una estrella a mi  proyecto!
-***¡Gracias de nuevo! ¡Ahora ve a crear algo INCREÍBLE! :D
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** Estoy usando markdown "reference style" enlaces para facilitar la lectura.
-*** Los enlaces de referencia están entre corchetes [ ] en lugar de paréntesis )..
-*** Consulte la parte inferior de este documento para la declaración de las variables de referencia.
-*** para URL de contribuyentes, URL de forks, etc. Esta es una sintaxis concisa y opcional que puede utilizar.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 
 
 <!-- PROJECT LOGO -->
@@ -44,7 +22,7 @@
   <summary>Tabla de contenido</summary>
   <ol>
     <li>
-      <a href="#about-the-project">Sobre el proyecto</a>
+      <a href="#about-the-project">Acerca del proyecto</a>
       <ul>
         <li><a href="#built-with">Construido con</a></li>
       </ul>
@@ -70,15 +48,14 @@
 <!-- ABOUT THE PROJECT -->
 ## Acerca del Proyecto
 
-A continuación, encontrará el código relacionado a la obtención de información adquirida desde formulario diligenciado en el frontend para almacenar en una base de datos y crear la respectiva narrativa con uso de la inteligencia artificial OPENAI de GPT.
+En el equipo TEAM 1 "Módulo de Crear y Colaborar", tuvimos la fortuna de poder trabajar mediante el uso de la API KEY de OPENAI que nos suministra en un periodo de tres meses de forma gratuita, para generar respuestas e historias con fines educativos para los niños; con el fin de concientizar sobre los fenómenos naturales que se presentan en nuestro planeta por diferentes factores. Adicionalmente, encontrarán el uso de API REST para permitir conectar los componentes creados en el Frontend con el respectivo backend.
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 
-
 ### Construido con
 
-* [![Node][Node.js]][https://nodejs.org/en]
+* [Node.js](https://nodejs.org/en)
 * [![Express][Express.js]][https://expressjs.com/]
 * [![Dotenv][Dotenv]][https://www.npmjs.com/package/dotenv]
 * [![Nodemon][Nodemon]][https://www.npmjs.com/package/nodemon]
