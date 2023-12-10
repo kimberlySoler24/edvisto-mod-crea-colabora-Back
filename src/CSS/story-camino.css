@@ -34,6 +34,7 @@ body{
 }
 
 .instrucciones{
+    color: var(--white10);
     background: var(--Tech);
     margin-block-start: 10%;
     margin-inline-start: 10%;
@@ -45,12 +46,15 @@ body{
 }
 
 h1{
-    color: var(--white10);
     text-align: center;
     font-weight: 700;
     font-size: 19px;
     margin-block-start: 20px;
     margin-block-end: 20px;
+}
+
+.camino-title{
+    color: black  !important;
 }
 
 .perrito{

@@ -259,28 +259,61 @@ const getSelectedCheckboxes = (containerId) => {
     return selectedValues;
 };
 
+// Llamado de API para guardar información.
+document.getElementById("formato").addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-//llamado de API para guardar información.
-document.getElementById("formato").addEventListener("submit", async(event) => { //en esta sección se selecciona un elemento del HTML con el ID denominado form-history del formulario definido y agrega un escuchador de eventos, el cual estará atento a cuando ese formulario sea enviado 'submit'. Cueando eso sucede, se ejecutará la función proporcionada como segundo argumento, en este caso la función asíncrona con parámetro definido 'event'.
-    event.preventDefault(); // Por defecto, una página HTML se recarga cuando se efectúa el envío respectivo por medio del botón, esta línea de código evita que la página se recargue.
-    console.log(event); // muestra en la consola el objeto 'event'. Este objeto contiene información sobre el evento que ha icurrido, en este caso, el envío del formulario.
+    try {
+        const respuesta = await fetch("http://localhost:3000/api/informacion-historia", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                title: event.target.querySelector('#title').value,
+                vida: getSelectedCheckboxes('vida-container'),
+                suceso: event.target.querySelector('#suceso').value,
+                resolver: event.target.querySelector('#resolver').value,
+                idea: event.target.querySelector('#idea').value,
+                solucion: event.target.querySelector('#solucion').value,
+            }),
+        });
 
-    const respuesta = await fetch("http://localhost:3000/api/informacion-historia", { //fetch permite realizar comunicación con el bakcend, donde hacer una solicitud a la URL definida.
-        method:"POST", //Se específica que la solicitud es de tipo POST, que es uno de los métodos HTTP utilizados para enviar datos al servidor.
-        headers:{ // Se establece el encabezado de la solicitud HTTP para indicar que se está enviando datos en formato JSON.
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ // Corresponde al cuerpo de la solicitud donde se definen los datos del objeto event que se enviarán al servidor. Estos datos los convierte en una cadena de texto JSON.
-            title: event.target.querySelector('#title').value,
-            vida: getSelectedCheckboxes('vida-container'),
-            suceso: event.target.querySelector('#suceso').value,
-            resolver: event.target.querySelector('#resolver').value,
-            idea: event.target.querySelector('#idea').value,
-            solucion: event.target.querySelector('#solucion').value,
-        })
-    });
+        const responseData = await respuesta.json();
+        console.log(responseData);
 
+        // Obtener el _id de la respuesta y guardarlo en Local Storage
+        const idFromMongoDB = responseData.id;
+        localStorage.setItem('mongoId', idFromMongoDB);
+
+        // Redirigir inmediatamente después de guardar el ID
+        window.location.href = "http://localhost:3000/narrativa";
+
+    } catch (error) {
+        console.error('Error al realizar la solicitud POST:', error);
+    }
 });
 
 
+// // Verificar si hay un ID almacenado en Local Storage
+// async function generarHistoria() {
+    
+//     const mongoId = localStorage.getItem('mongoId');
+//     console.log(mongoId);
+//     if (mongoId) {
+//         try {
+//             const openAIResponse = await fetch(`/api/informacion-historia/${mongoId}`, {
+//                 method: 'GET',
+//             });
 
+//             const openAIResult = await openAIResponse.json();
+
+//             // Mostrar la historia en la consola
+//             console.log('Historia generada:', openAIResult);
+//         } catch (error) {
+//             console.error('Error al generar la historia:', error);
+//         }
+//     } else {
+//         console.error('No se encontró un ID en Local Storage. Primero, guarda la información en MongoDB.');
+//     }
+// }

@@ -47,5 +47,5 @@ app.get('/api/informacion-historia', getHistoryInformation);// permite obtener l
 app.get('/api/informacion-historia/:historyId', getHistoryInformationById); // permite obtener información especifica por id
 // app.put('/api/informacion-historia/:historyId', updateInformation);
 app.delete('/api/informacion-historia/:historyId', deleteInformation);
-app.put('/api/informacion-historia/:historyId', responseOpenApiAI); 
+//app.put('/api/informacion-historia/:historyId', responseOpenApiAI); 
 //------------------------------------------------------

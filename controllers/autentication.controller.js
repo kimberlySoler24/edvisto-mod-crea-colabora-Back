@@ -1,6 +1,16 @@
 const InformationSchema = require('../models/informationHistory.js');
 
+const OpenAIApi = require('openai'); //variable que se necesita para utilizar el SDK de OPENAI de javascript
+
+// Inicialización de openAI API
+const openai = new OpenAIApi({
+  apikey: process.env.OPENAI_API_KEY,
+  organization: process.env.ORGANIZATION_OPEN_AI
+});
+
+
 async function historyInformation(request, response) {
+  try {
     console.log(request.body);
     let informationSchema = new InformationSchema();
 
@@ -12,29 +22,46 @@ async function historyInformation(request, response) {
     informationSchema.solucion = request.body.solucion;
 
 
-    if (!informationSchema.title  || !informationSchema.vida || !informationSchema.suceso  || !informationSchema.resolver ||!informationSchema.idea  || !informationSchema.solucion) {
-        return response.status(400).send({
-            status: "Error",
-            message: "Los campos están incompletos"
-        })
+    if (!informationSchema.title || !informationSchema.vida || !informationSchema.suceso || !informationSchema.resolver || !informationSchema.idea || !informationSchema.solucion) {
+      return response.status(400).send({
+        status: "Error",
+        message: "Los campos están incompletos"
+      })
     };
 
-    try {
-      const savedData = await informationSchema.save();
-      response.status(200).json({
-        id: savedData._id,
-        message: 'Información guardada exitosamente'
-      });
-    } catch (error) {
-      response.save(500).json({
-        message: `La información no se está guardando en la base de datos ${error}`
-      })
-    }
+    //guarda la informacion básica en la base de datos
+    const savedData = await informationSchema.save();
 
-    // informationSchema
-    // .save()
-    // .then((data) => response.status(200).json(data))
-    // .catch((error) => response.status(500).json({message: `La información no se está guardando en la base de datos ${error}`}));
+    //Generar narrativa con OPENAI
+    const mensajeUsuario = `Actúa como un experto en editor de textos. Redacta un texto con un tono y estilo amigable y entendible para niños de 8 a 10 años.
+      Debe tener la siguiente estructura :  estructura narrativa ARGUMENTATIVA [ introducción es un párrafo de 150 caracteres / desarrollo de argumentos son 2 párrafos de 400 caracteres cada uno / conclusión un párrafo de 250 caracteres], utiliza como base para la redacción lo siguiente información : ${savedData._id}:\n${JSON.stringify(savedData)}`;
+
+    const chatCompletion = await openai.chat.completions.create({
+      messages: [{ role: 'user', content: mensajeUsuario }],
+      model: 'gpt-3.5-turbo',
+      temperature: 0.1,
+      max_tokens: 1000
+    });
+
+    const responseOpenAI = chatCompletion.choices[0].message.content;
+    console.log(chatCompletion.choices[0].message.content);
+
+    //Actualizar la base de datos con la respuesta de OpenAI
+    const updateData = await InformationSchema.findByIdAndUpdate(savedData._id, { responseAI: responseOpenAI }, { new: true });
+
+    console.log('Respuesta guardada en la base de datos: ', updateData);
+
+    response.status(200).json({
+      id: savedData._id,
+      message: 'Información y respuesta guardadas exitosamente'
+    });
+  } catch (error) {
+    console.log(error);
+    response.status(500).json({
+      message: `Error al procesar la solicitud: ${error}`
+    })
+  }
+
 }
 
 
