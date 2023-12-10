@@ -55,12 +55,12 @@ En el equipo TEAM 1 "Módulo de Crear y Colaborar", tuvimos la fortuna de poder 
 
 ### Construido con
 
-* [Node.js](https://nodejs.org/en)
-* [![Express][Express.js]][https://expressjs.com/]
-* [![Dotenv][Dotenv]][https://www.npmjs.com/package/dotenv]
-* [![Nodemon][Nodemon]][https://www.npmjs.com/package/nodemon]
-* [![OpenAI][OpenAI]][https://www.npmjs.com/package/openai]
-* [![MongoDB][MongoDB]][https://www.mongodb.com/es]
+* ![Node.js](https://nodejs.org/en)
+* ![Expres]https://expressjs.com/]
+* ![Dotenv][https://www.npmjs.com/package/dotenv]
+* ![Nodemon][https://www.npmjs.com/package/nodemon]
+* ![OpenAI][https://www.npmjs.com/package/openai]
+* ![MongoDB][https://www.mongodb.com/es]
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
